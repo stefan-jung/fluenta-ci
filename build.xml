@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="fluenta" basedir="Fluenta" xmlns:if="ant:if" xmlns:unless="ant:unless">
+    
+    <import file="Fluenta/build.xml"/>
+    
+    <target name="fluenta">
+        <echo>JAVA_HOME = ${java.home}</echo>
+        <exec executable="git">
+            <arg line="submodule update --remote"/>
+        </exec>
+        <copy file="SWT/gtk64/swt.jar" todir="jars/" overwrite="true" verbose="true"/>
+        <antcall target="dist"/>
+    </target>
+    
+</project>

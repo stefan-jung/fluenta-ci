@@ -1,0 +1,3 @@
+[submodule "Fluenta"]
+	path = Fluenta
+	url = git@github.com:rmraya/Fluenta.git
