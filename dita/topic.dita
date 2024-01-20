@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="urn:oasis:names:tc:dita:rng:concept.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<concept id="unbenannt3">
+    <title>Test Topic</title>
+    <shortdesc>This is the short description.</shortdesc>
+    <conbody>
+        <p>This is a paragraph.</p>
+    </conbody>
+</concept>
