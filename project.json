@@ -1,0 +1,7 @@
+{ id:12345678,
+  title:"Sample project",
+  description:"project created using JSON and CLI",
+  map:"/home/stefan/workspace/fluenta-ci/dita/map.ditamap",
+  srcLang:"en-US",
+  tgtLang:["de-DE","fr-FR"]
+}

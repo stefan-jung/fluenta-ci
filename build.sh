@@ -12,4 +12,15 @@ ant fluenta
 # Echo Fluenta version
 Fluenta/fluenta_cli.sh -version
 
+# Determine absulute path of DITAMAP
+DITAMAP=$(readlink -f dita/map.ditamap)
+echo "${DITAMAP}"
+
 # Create a project
+Fluenta/fluenta_cli.sh -add ../project.json
+
+# Echo all projects
+Fluenta/fluenta_cli.sh -getProjects
+
+# Generate XLIFF
+Fluenta/fluenta_cli.sh -generateXLIFF ../genXLIFF.json -verbose

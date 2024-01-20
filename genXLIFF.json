@@ -1,0 +1,12 @@
+{ id:12345678,
+  xliffFolder: "/home/stefan/workspace/fluenta-ci/xliff",
+  tgtLang: ["de-DE", "fr-FR"],
+  useICE: true,
+  modifiedFilesOnly: true,
+  useTM: true,
+  generateCount: false, 
+  useXLIFF20: true,
+  paragraph: false, 
+  ignoreTrackedChanges: false,
+  embedSkeleton: false
+}
