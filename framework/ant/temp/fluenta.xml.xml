@@ -1,0 +1,7 @@
+{id:19191,
+title:"my name",
+description:"my description",
+map:"../dita/map.ditamap",
+srcLang:"en-US",
+tgtLang:["es-ES","nl-NL","ru-RU","et-EE"]
+}

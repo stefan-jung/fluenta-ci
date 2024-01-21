@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fluenta>
+    <project id="19191" map="../dita/map.ditamap" srcLang="en-US" tgtLang="es-ES,nl-NL,ru-RU,et-EE">
+        <name>my name</name>
+        <description>my description</description>
+    </project>
+</fluenta>

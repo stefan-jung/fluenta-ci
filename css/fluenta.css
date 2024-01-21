@@ -1,0 +1,145 @@
+@namespace oxy "http://www.oxygenxml.com/extensions/author";
+
+@media oxygen AND (min-width:25cm) {
+
+    /* A gray background */
+    oxy|document {
+      background-color:#fbfbfb;
+    }
+    
+    /* The white page.*/
+    :root{      
+      /* White page */
+      border: 1px solid #c6c6c6;
+      background-color:white;
+      /* Centered*/
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 0.25in;
+      margin-bottom: 0.25in;
+      
+      /* Letter */
+      width: 21.59cm; 
+      min-height:10cm; /*27.94cm; would be the letter, but a smaller size avoids large caret jumps*/
+      
+    }
+    
+    /* Padding inside the page. */
+    :root {
+          padding-top:2em;
+          padding-right:2em;
+          padding-left:3em;
+          padding-bottom:5em;
+    }
+}
+
+fluenta {
+}
+
+project {
+    display: block;
+    border: 1pt solid gray;
+    margin: 2.0em;
+    padding: 2.0em;
+}
+project:before {
+    content:
+        oxy_label(text, "id", width, 10em, color, inherit)
+        oxy_textfield(edit, '@id', columns, 40);
+}
+
+project:after {
+    content:
+        oxy_label(text, "map", width, 10em, color, inherit)
+        oxy_urlChooser(edit, '@map', columns, 40)
+        "\A"
+        
+        oxy_label(text, "Language bundle", width, 10em, color, inherit)
+        oxy_buttonGroup(
+            label, 'Select language bundle', 
+            icon, url('http://www.oxygenxml.com/img/icn_oxy20.png'),
+            actions, 
+                oxy_action_list(
+                    oxy_action(
+                        name, 'EMEA24', 
+                        description, 'Set the EMEA24 languages as target languages', 
+                        operation, 'ro.sync.ecss.extensions.commons.operations.ChangeAttributeOperation', 
+                        arg-name, 'tgtLang',
+                        arg-value, 'de-DE,fr-FR,es-ES'
+                    ),
+                    oxy_action(
+                        name, 'Delete', 
+                        description, 'Deletes the current element', 
+                        operation, 'ro.sync.ecss.extensions.commons.operations.DeleteElementOperation' 
+                    )
+                )
+            )
+        "\A"
+
+        oxy_label(text, "Source language", width, 10em, color, inherit)
+        oxy_checkbox(        
+            edit, "@srcLang",
+            values, "en-US",
+            uncheckedValues, "en-US",
+            resultSeparator, ","
+            labels, "English (en-US)"
+        )
+        "\A"
+
+        oxy_label(text, "Target languages", width, 10em, color, inherit)
+        oxy_checkbox(        
+            edit, "@tgtLang",
+            values, "de-DE, fr-FR, es-ES, pt-PT, it-IT, nl-NL, da-DK, sv-SE, nb-NO, fi-FI, ru-RU, pl-PL, sk-SK, cs-CZ, hu-HU, hr-HR, tr-TR, sl-SI, ro-RO, bg-BG, sr-RS, et-EE",
+            columns, 4,
+            resultSeparator, ","
+            labels, "German (de-DE), French (fr-FR), Spanish (es-ES), Portuguese (pt-PT), Italian (it-IT), Dutch (nl-NL), Danish (da-DK), Swedish (sv-SE), Norwegian (nb-NO), Finnish (fi-FI), Russian (ru-RU), Polish (pl-PL), Slovak (sk-SK), Czech (cs-CZ), Hungarian (hu-HU), Croatian (hr-HR), Turkish (tr-TR), Slovenian (sl-SI), Romanian (ro-RO), Bulgarian (bg-BG), Serbian (sr-RS), Estonian (et-EE)")
+            
+        oxy_button(
+            action, oxy_action(
+                name, 'Generate XLIFF (locally)', 
+                description, 'Generate XLIFF files locally', 
+                icon, url('insert.png'), 
+                operation, 'ro.sync.ecss.extensions.commons.operations.ExecuteCustomizableTransformationScenarioOperation', 
+                arg-scenarioName, 'Fluenta generate XLIFFs',
+                arg-scenarioParameters, 'fluentaFile=.'
+            ),
+            showIcon, true
+        );
+}
+
+/*ro.sync.ecss.extensions.commons.operations.ExecuteCustomizableTransformationScenarioOperation
+scenarioName
+scenarioParameters
+markInProgressXPathLocation
+markOthersInProgressXPathLocation*/
+
+
+name {
+    display: block;
+}
+
+name:before {
+    content: 
+        oxy_label(text, "Name", width, 10em, color, inherit)
+        oxy_textfield(edit, '#text', columns, 40);
+    display: block;
+}
+
+description {
+    display: block;
+}
+
+description:before {
+    content: 
+        oxy_label(text, "Description", width, 10em, color, inherit)
+        oxy_textArea(edit, '#text', contentType, 'text/javascript', rows, 10, columns, 40);
+    display: block;
+}
+
+/* { id:12345678, 
+    title:"JSON test", 
+    description:"project created using JSON and CLI", 
+    map:"D:\\sample content\\en\\User_Guide-use-only.ditamap", 
+    srcLang:"en-US", 
+    tgtLang:["es","fr"]
+    }*/

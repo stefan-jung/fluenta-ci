@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar 
+    xmlns="http://relaxng.org/ns/structure/1.0"
+    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+    datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    
+    <start>
+        <element name="fluenta">
+            <oneOrMore>
+                <ref name="project"/>
+            </oneOrMore>
+        </element>
+    </start>
+    
+    <!--{ id:12345678, 
+    title:"JSON test", 
+    description:"project created using JSON and CLI", 
+    map:"D:\\sample content\\en\\User_Guide-use-only.ditamap", 
+    srcLang:"en-US", 
+    tgtLang:["es","fr"]
+    }-->
+    
+    
+    <define name="project">
+        <element name="project">
+            <attribute name="id">
+                <data type="integer"/>
+            </attribute>
+            <attribute name="map">
+                <data type="anyURI"/>
+            </attribute>
+            <attribute name="srcLang">
+                <value>en-US</value>
+            </attribute>
+            <attribute name="tgtLang">
+                <data type="string"/>
+            </attribute>
+            <optional>
+                <attribute name="memories">
+                    <data type="string">
+                        <param name="pattern">[0-9][0-9](,[0-9][0-9])*</param>
+                    </data>
+                </attribute>
+            </optional>
+            <ref name="project-name"/>
+            <ref name="project-description"/>
+        </element>
+    </define>
+
+    <define name="project-name">
+        <element name="name">
+            <text/>
+        </element>
+    </define>
+
+    <define name="project-description">
+        <element name="description">
+            <text/>
+        </element>
+    </define>
+    
+</grammar>

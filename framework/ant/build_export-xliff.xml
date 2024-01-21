@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." default="export-xliffs">
+    
+    <path id="saxon">
+        <fileset dir="../lib/">
+            <include name="xmlresolver-5.2.2.jar"/>
+            <include name="saxon-he-12.4.jar"/>
+        </fileset>
+    </path>
+    
+    <target name="export-xliffs">
+        <delete dir="temp" failonerror="false"/>
+        <mkdir dir="temp"/>
+        <basename file="${fluenta-file}" property="fluenta-file-basename"/>
+        <echo>Export XLIFF</echo>
+        <echo>fluenta-file = ${fluenta-file}</echo>
+        <echo>fluenta-id = ${fluenta-id}</echo>
+        <xslt style="../xsl/export-xliffs.xsl"
+            in="${fluenta-file}"
+            out="temp/${fluenta-file-basename}.xml"
+            force="true"
+            failOnError="true">
+            <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+            <classpath refid="saxon"/>
+            <param name="fluenta-id" expression="${fluenta-id}"/>
+        </xslt>
+        <loadfile srcfile="temp/${fluenta-file-basename}.xml" property="output.file"/>
+        <echo>${output.file}</echo>
+    </target>
+    
+</project>
